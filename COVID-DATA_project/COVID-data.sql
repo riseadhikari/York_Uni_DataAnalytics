@@ -96,7 +96,7 @@ AND dea.date = vacc.date
 WHERE dea.continent IS NOT NULL AND vacc.new_vaccinations IS NOT NULL
 ORDER BY dea.continent, dea.location,dea.date;
 
---TempTable 
+-- Using TempTable to insert and access data in preferred way..... 
 
 DROP TABLE IF EXISTS VaccinationPercentage;
 CREATE TEMPORARY TABLE VaccinationPercentage
@@ -117,4 +117,3 @@ ON dea.location = vacc.location
 AND dea.date = vacc.date;
 
 SELECT *,(CAST(VaccinatedTillDate AS FLOAT)/CAST(population AS FLOAT))*100 AS VaccinationTillDateinPercentage FROM VaccinationPercentage;
-
